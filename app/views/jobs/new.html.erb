@@ -4,12 +4,25 @@
     <hr>
     <%= form_for @job do |f| %>
 
-    标题
+    职位
     <%= f.text_field :title %>
     <br>
     描述
-    <br>
+
     <%= f.text_area :description %>
+    <br>
+    薪资上限
+
+    <%= f.text_area :description %>
+    <br>
+    薪资下限
+
+    <%= f.text_area :description %>
+    <br>
+    邮箱
+    
+    <%= f.text_area :description %>
+
     <br>
 
     <%= f.submit "提交", :disable_with => '正在提交...' %>
