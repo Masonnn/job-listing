@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :jobs
 
-  # def admin?
-  #   is_admin
-  # end
+  def admin?
+    is_admin
+  end
 end

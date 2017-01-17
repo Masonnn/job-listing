@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :jobs
   root 'jobs#index'
 
-  namespace :account do
+  namespace :admin do
     resources :jobs
   end
 end
