@@ -41,7 +41,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     @job.destroy
-    redirect_to root_path, alert: "已删除！"
+    redirect_to jobs_path, alert: "已删除！"
   end
 
   private

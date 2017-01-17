@@ -1,29 +1,11 @@
 <div class="col-md-4 col-md-offset-4">
-    <h2>新增职位</h2>
+    <h1>新增职位</h1>
 
-    <hr>
-    <%= form_for @job do |f| %>
+    <%= simple_form_for @job do |f| %>
 
-    职位
-    <%= f.text_field :title %>
-    <br>
-    描述
+    <%= f.input :title %>
+    <%= f.input :description %>
 
-    <%= f.text_area :description %>
-    <br>
-    薪资上限
-
-    <%= f.text_area :description %>
-    <br>
-    薪资下限
-
-    <%= f.text_area :description %>
-    <br>
-    邮箱
-    
-    <%= f.text_area :description %>
-
-    <br>
 
     <%= f.submit "提交", :disable_with => '正在提交...' %>
     <% end %>
