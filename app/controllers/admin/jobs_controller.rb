@@ -2,12 +2,6 @@ class Admin::JobsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
     before_action :require_is_admin
 
-    def require_is_admin
-      if !current_user.admin?
-        flash[:alert] = '抱歉！你不是管理员，无权进行相关操作！'
-        redirect_to root_path
-      end
-    end
 
     def show
         @job = Job.find(params[:id])
@@ -55,6 +49,6 @@ class Admin::JobsController < ApplicationController
     private
 
     def job_params
-        params.require(:job).permit(:title, :description)
+        params.require(:job).permit(:title, :description, :wage_upper_bound, :wage_lower_bound, :contact_email)
     end
 end
