@@ -5,6 +5,30 @@
 <br><br>
 
 <table class="table table-boldered">
+    <thead>
+        <tr>
+            <td>
+                职缺
+            </td>
+
+            <td>
+                收到履历数量
+            </td>
+            <td>
+                薪资下限
+            </td>
+            <td>
+                薪资上限
+            </td>
+            <td>
+                管理选项
+            </td>
+            <td>
+                刊登时间
+            </td>
+        </tr>
+    </thead>
+
     <% @jobs.each do |job| %>
     <tr>
         <td>
@@ -19,9 +43,9 @@
             <% if job.is_hidden %>
 
             <%= link_to("显示", publish_admin_job_path(job) , :method => :post, :class => "btn btn-xs btn-default") %>
-          <% else %>
+        <% else %>
             <%= link_to("隐藏", hide_admin_job_path(job), :method => :post,  :class => "btn btn-xs btn-default") %>
-          <% end %>
+            <% end %>
 
         </td>
         <td>
