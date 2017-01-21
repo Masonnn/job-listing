@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @jobs = Job.where(:is_hidden => false).order("created_at DESC")
+    @jobs = Job.where(is_hidden: false).order('created_at DESC')
   end
 
   def new
@@ -11,6 +11,11 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+
+    if @job.is_hidden
+      flash[:warning] = "此职位已归档！"
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -21,7 +26,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
 
     if @job.save
-      redirect_to jobs_path, notice: "创建成功！"
+      redirect_to jobs_path, notice: '创建成功！'
     else
       render new
     end
@@ -31,7 +36,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     if @job.update(job_params)
-      redirect_to jobs_path, notice: "更新成功！"
+      redirect_to jobs_path, notice: '更新成功！'
     else
       render edit
     end
@@ -41,7 +46,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     @job.destroy
-    redirect_to jobs_path, alert: "已删除！"
+    redirect_to jobs_path, alert: '已删除！'
   end
 
   private
