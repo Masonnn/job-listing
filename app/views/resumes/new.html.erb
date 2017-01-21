@@ -1,0 +1,6 @@
+<%= simple_form_for [@job, @resume] do |f| %>
+  <%= f.input :content, :label => "简历描述" %>
+  <%= f.input :attachment, :label => "添加附件" %>
+
+  <%= f.submit "送出" %>
+<% end %>
