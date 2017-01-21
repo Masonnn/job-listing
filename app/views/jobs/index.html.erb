@@ -4,15 +4,15 @@
     <div class="searchform">
         <%= text_field_tag :search, params[:search], placeholder: "搜索职位", class: "searchbox"%>
         <span>
-            <%= submit_tag "搜索", :title => nil, :description => nil, class: "mike" %>
-            <!-- <input type="submit" value="点 击" class="mike"> -->
+            <%= submit_tag "搜索", :title => nil, :description => nil, class: "searchbutton" %>
+            <!-- <input type="submit" value="点 击" class="searchbutton"> -->
         </span>
     </div>
     <% end %>
 
-    <div class="pull-right">
-        <%= link_to("新增职位", new_job_path, :class => "btn btn-default" ) %>
-    </div>
+    <!-- <div class="pull-right">
+        <！%= link_to("新增职位", new_job_path, :class => "btn btn-default" ) %>
+    </div> -->
 
     <div class="dropdown clearfix pull-right">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -25,11 +25,9 @@
             </li>
             <li>
                 <%= link_to("按照薪资上限排序", jobs_path(:order => "by_upper_bound")) %>
-
             </li>
             <li>
                 <%= link_to("按照发表时间排序", jobs_path ) %>
-
             </li>
         </ul>
     </div>
