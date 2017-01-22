@@ -4,13 +4,13 @@ class JobsController < ApplicationController
   def index
     @jobs = case params[:order]
             when 'by_lower_bound'
-              Job.published.order('wage_lower_bound DESC')
+              Job.published.order('wage_lower_bound DESC').search(params[:search]).paginate(page: params[:page], per_page: 5)
             when 'by_upper_bound'
-              Job.published.order('wage_upper_bound DESC')
+              Job.published.order('wage_upper_bound DESC').search(params[:search]).paginate(page: params[:page], per_page: 5)
             else
-              Job.published.recent.published.search(params[:search])
-            end
-  end
+              Job.published.recent.search(params[:search]).paginate(page: params[:page], per_page: 2)
+         end
+      end
 
   def new
     @job = Job.new
@@ -35,7 +35,7 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to jobs_path, notice: '创建成功！'
     else
-      render new
+      render :new
     end
   end
 
@@ -45,7 +45,7 @@ class JobsController < ApplicationController
     if @job.update(job_params)
       redirect_to jobs_path, notice: '更新成功！'
     else
-      render edit
+      render :edit
     end
   end
 
